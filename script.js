@@ -1,4 +1,3 @@
-// Määritellään vaiheet suoraan JavaScriptissä
 const steps = [
     {
         title: "Vaihe 1: Valkoinen risti",
@@ -66,31 +65,27 @@ class RubiksCube {
     constructor(steps) {
         this.steps = steps.map(step => new RubiksCubeStep(step.title, step.formula, step.description, step.image));
         this.timerInterval = null;
-        this.elapsedTime = 0; // Kulunut aika sekunteina
+        this.elapsedTime = 0; 
     }
 
     showStep(stepNumber) {
         const step = this.steps[stepNumber - 1];
         step.display();
 
-        // Näytetään alert vain, jos vaihe on seitsemän
         if (stepNumber === 7) {
             alert("Onnittelut! Olet ratkaissut Rubikin kuution!");
         }
 
-        // Aloitetaan ajastin
         this.startTimer();
     }
 
     startTimer() {
-        // Nollataan aikaväli, jos se on jo käynnissä
         if (this.timerInterval) {
             clearInterval(this.timerInterval);
         }
 
-        // Asetetaan ajastin
         this.elapsedTime = 0;
-        document.getElementById("timer").innerText = `Kulunut aika: ${this.elapsedTime} sekuntia`; // Näytetään alkuaika
+        document.getElementById("timer").innerText = `Kulunut aika: ${this.elapsedTime} sekuntia`; 
         this.timerInterval = setInterval(() => {
             this.elapsedTime++;
             document.getElementById("timer").innerText = `Kulunut aika: ${this.elapsedTime} sekuntia`;
@@ -110,7 +105,6 @@ class RubiksCube {
 const rubiksCube = new RubiksCube(steps);
 rubiksCube.populateFormulas();
 
-// Lisätään tapahtumakuuntelija vaiheiden valintaan
 const stepContainer = document.getElementById("step-container");
 steps.forEach((step, index) => {
     const stepBox = document.createElement("div");
@@ -120,7 +114,6 @@ steps.forEach((step, index) => {
     stepContainer.appendChild(stepBox);
 });
 
-// Kellonajan hakeminen
 async function fetchCurrentTime() {
     try {
         const response = await fetch('http://worldtimeapi.org/api/timezone/Europe/Helsinki');
@@ -132,22 +125,19 @@ async function fetchCurrentTime() {
     }
 }
 
-// Kutsutaan fetchCurrentTime-funktiota ladattaessa sivua
 fetchCurrentTime();
 
-// Tapahtumakuuntelija palautelomakkeelle
 document.getElementById("feedback-form").addEventListener("submit", function (event) {
-    event.preventDefault(); // Estetään oletustoiminto
+    event.preventDefault(); 
     alert("Palautteesi on lähetetty, kiitos!");
-    this.reset(); // Tyhjennetään lomake
+    this.reset(); 
 });
 
-// Taustavärin vaihto
 const colors = ['lightblue', 'lightgreen', 'lightcoral', 'lightyellow', 'lightpink', 'lightgray'];
 let currentColorIndex = 0;
 
 document.getElementById("change-bg-btn").addEventListener("click", () => {
     // Vaihdetaan taustaväri seuraavaan väriin
-    currentColorIndex = (currentColorIndex + 1) % colors.length; // Siirrytään seuraavaan väriin
-    document.body.style.backgroundColor = colors[currentColorIndex]; // Asetetaan taustaväri
+    currentColorIndex = (currentColorIndex + 1) % colors.length;
+    document.body.style.backgroundColor = colors[currentColorIndex]; 
 });
