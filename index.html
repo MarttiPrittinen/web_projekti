@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rubikin kuution ratkaiseminen - Opas</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Rubikin kuution ratkaisu opas</h1>
+    </header>
+
+    <main>
+        <section id="intro">
+            <h2>Johdanto</h2>
+            <p>Tervetuloa opettelemaan Rubikin kuution ratkaisemista! Tämä opas näyttää sinulle kaikki vaiheet ja niihin liittyvät kaavat kuution ratkaisemiseksi.</p>
+            <p>Katso myös <a href="https://www.youtube.com/watch?v=SrlQ5zOyhA0" target="_blank">tämä YouTube-video</a> kuution ratkaisemiseen liittyen!</p>
+        </section>
+
+        <section id="current-time">
+            <h2>Nykyinen kellonaika</h2>
+            <div id="time-display"></div> <!-- Kellonajan näyttö -->
+        </section>
+
+        <section id="symbol-legend">
+            <h2>Kaavan symbolit</h2>
+            <button id="toggle-symbols-btn">Näytä symbolit</button>
+            <div id="symbols">
+                <ul>
+                    <li><strong>F</strong>: Etu</li>
+                    <li><strong>R</strong>: Oikea</li>
+                    <li><strong>U</strong>: Ylös</li>
+                    <li><strong>B</strong>: Takana</li>
+                    <li><strong>L</strong>: Vasen</li>
+                    <li><strong>D</strong>: Alas</li>
+                    <li><strong>F'</strong>: Etu vastapäivään</li>
+                    <li><strong>R'</strong>: Oikea vastapäivään</li>
+                    <li><strong>U'</strong>: Ylös vastapäivään</li>
+                    <li><strong>B'</strong>: Takana vastapäivään</li>
+                    <li><strong>L'</strong>: Vasen vastapäivään</li>
+                    <li><strong>D'</strong>: Alas vastapäivään</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="vaiheet">
+            <h2>Vaiheet Rubikin kuution ratkaisemiseksi</h2>
+            <div class="step-container" id="step-container">
+                <!-- Vaiheiden laatikot lisätään tänne JavaScriptin kautta -->
+            </div>
+        </section>
+
+        <section id="instructions">
+            <h2 id="step-title">Valitse vaihe</h2>
+            <p id="step-formula"></p>
+            <p id="step-description"></p>
+            <img id="step-image" src="" alt="Rubikin kuutio" style="display:none;">
+            <div id="timer" style="margin-top: 20px; font-weight: bold;">Kulunut aika: 0 sekuntia</div>
+        </section>
+
+        <section id="tables">
+            <h2>Vaiheiden ja kaavojen taulukot</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Vaihe</th>
+                        <th>Kaava</th>
+                    </tr>
+                </thead>
+                <tbody id="formula-table-body">
+                    <!-- Taulukon sisällön täyttää JavaScript -->
+                </tbody>
+            </table>
+        </section>
+
+        <section id="feedback">
+            <h2>Anna palautetta</h2>
+            <form id="feedback-form">
+                <label for="name">Nimesi:</label>
+                <input type="text" id="name" required>
+                <label for="feedback">Palautteesi:</label>
+                <textarea id="feedback" required></textarea>
+                <button type="submit">Lähetä palaute</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Rubikin kuution ratkaiseminen. Kaikki oikeudet pidätetään.</p>
+        <button id="change-bg-btn">Vaihda taustaväri</button>
+    </footer>
+
+    <script>
+        const steps = [
+            {
+                title: "Vaihe 1: Valkoinen risti",
+                formula: "F R U R' U' F'",
+                description: "Ratkaisu aloitetaan hakemalla valkoiset reunapalat ristin muotoon niin, että keskimmäisten reunapalojen värit ovat kohdallaan. Tämä vaihe on kohtalaisen helppo, ja Rubikin kuutioon voi hyvin hakea tuntumaa siirtelemällä reunapaloja kohdilleen. Samalla saat hieman kiinni siitä, miten palat kuutiossa liikkuvat.",
+                image: "Images/1.JPG"
+            },
+            {
+                title: "Vaihe 2: Valkoiset kulmapalat",
+                formula: "R U R' U R U2 R'",
+                description: "Tavoitteena on siis saada valkoiset kulmapalat oikealle kohdalleen ja vieläpä oikeaan asentoon. Kulmapalat tuodaan oikealle paikalleen yksi kerrallaan ja siirrot ovat melko yksinkertaisia, joten vielä tässäkin vaiheessa kannattaa yrittää pyöritellä ainakin osa kulmapaloista kohdalleen ilman valmiiden liikesarjojen apua.",
+                image: "Images/2.JPG"
+            },
+            {
+                title: "Vaihe 3: Keskipalat",
+                formula: "U R U' R U R U2 R'",
+                description: "Nyt asetat keskiosat oikeille paikoilleen.",
+                image: "Images/3.JPG"
+            },
+            {
+                title: "Vaihe 4: Keltainen risti",
+                formula: "F R U R' U' F'",
+                description: "Aseta keltaiset reunapalat yläpintaan niin, että ne muodostavat keltaisen ristin. Tämä vaihe voi vaatia useita toistoja kaavan kanssa.",
+                image: "Images/4.JPG"
+            },
+            {
+                title: "Vaihe 5: Keltaiset reunapalat",
+                formula: "R U R' U R U2 R'",
+                description: "Asettele keltaiset reunapalat oikeille sivuille, jotta saadaan värit täsmäämään. Jos värit ovat jo kohdallaan, voit siirtyä suoraan seuraavaan vaiheeseen.",
+                image: "Images/5.JPG"
+            },
+            {
+                title: "Vaihe 6: Keltaiset kulmapalat oikeille paikoilleen",
+                formula: "U R U' L' U R' U' L",
+                description: "Siirrä viimeiset palat, eli keltaiset kulmat, oikeille paikoilleen. Käännä ne oikeaan asentoon seuraavassa vaiheessa.",
+                image: "Images/6.JPG"
+            },
+            {
+                title: "Vaihe 7: Keltaiset kulmapalat oikeaan asentoon",
+                formula: "R U R' U R U2 R'",
+                description: "Käännä keltaiset kulmapalat oikeaan asentoon. Varmista, että jokaisen kulman keltaiset värit ovat ylös, ja että ne sopivat myös reunakappaleiden väreihin.",
+                image: "Images/7.JPG"
+            }
+        ];
+
+        class RubiksCubeStep {
+            constructor(title, formula, description, image) {
+                this.title = title;
+                this.formula = formula;
+                this.description = description;
+                this.image = image;
+            }
+
+            display() {
+                document.getElementById("step-title").innerText = this.title;
+                document.getElementById("step-formula").innerText = "Kaava: " + this.formula;
+                document.getElementById("step-description").innerText = this.description;
+                const stepImage = document.getElementById("step-image");
+                stepImage.src = this.image;
+                stepImage.style.display = "block";
+            }
+        }
+
+        class RubiksCube {
+            constructor(steps) {
+                this.steps = steps.map(step => new RubiksCubeStep(step.title, step.formula, step.description, step.image));
+                this.timerInterval = null;
+                this.elapsedTime = 0; // Kulunut aika sekunteina
+            }
+
+            showStep(stepNumber) {
+                const step = this.steps[stepNumber - 1];
+                step.display();
+
+                // Näytetään alert vain, jos vaihe on seitsemän
+                if (stepNumber === 7) {
+                    alert("Onnittelut! Olet ratkaissut Rubikin kuution!");
+                }
+
+                // Aloitetaan ajastin
+                this.startTimer();
+            }
+
+            startTimer() {
+                // Nollataan aikaväli, jos se on jo käynnissä
+                if (this.timerInterval) {
+                    clearInterval(this.timerInterval);
+                }
+
+                // Asetetaan ajastin
+                this.elapsedTime = 0;
+                document.getElementById("timer").innerText = `Kulunut aika: ${this.elapsedTime} sekuntia`; // Näytetään alkuaika
+                this.timerInterval = setInterval(() => {
+                    this.elapsedTime++;
+                    document.getElementById("timer").innerText = `Kulunut aika: ${this.elapsedTime} sekuntia`;
+                }, 1000);
+            }
+
+            populateFormulas() {
+                const tbody = document.getElementById("formula-table-body");
+                this.steps.forEach(step => {
+                    const row = document.createElement("tr");
+                    row.innerHTML = `<td>${step.title}</td><td>${step.formula}</td>`;
+                    tbody.appendChild(row);
+                });
+            }
+        }
+
+        const rubiksCube = new RubiksCube(steps);
+        rubiksCube.populateFormulas();
+
+        // Lisätään tapahtumakuuntelija vaiheiden valintaan
+        const stepContainer = document.getElementById("step-container");
+        steps.forEach((step, index) => {
+            const stepBox = document.createElement("div");
+            stepBox.className = "step-box";
+            stepBox.innerHTML = `<h3>${step.title}</h3>`;
+            stepBox.onclick = () => rubiksCube.showStep(index + 1);
+            stepContainer.appendChild(stepBox);
+        });
+
+        // Kellonajan hakeminen
+        function updateCurrentTime() {
+            const currentTime = new Date();
+            document.getElementById("time-display").innerText = currentTime.toLocaleString('fi-FI', {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            });
+        }
+
+        // Kutsutaan updateCurrentTime-funktiota ladattaessa sivua
+        updateCurrentTime();
+        setInterval(updateCurrentTime, 1000); // Päivitetään kellonaika joka sekunti
+
+        // Tapahtumakuuntelija palautelomakkeelle
+        document.getElementById("feedback-form").addEventListener("submit", function (event) {
+            event.preventDefault(); // Estetään oletustoiminto
+            alert("Palautteesi on lähetetty, kiitos!");
+            this.reset(); // Tyhjennetään lomake
+        });
+
+        // Taustavärin vaihto
+        const colors = ['lightblue', 'lightgreen', 'lightcoral', 'lightyellow', 'lightpink', 'lightgray'];
+        let currentColorIndex = 0;
+
+        document.getElementById("change-bg-btn").addEventListener("click", () => {
+            // Vaihdetaan taustaväri seuraavaan väriin
+            currentColorIndex = (currentColorIndex + 1) % colors.length; // Siirrytään seuraavaan väriin
+            document.body.style.backgroundColor = colors[currentColorIndex]; // Asetetaan taustaväri
+        });
+
+        // Lisätään tapahtumakuuntelija "Näytä symbolit" -napille
+        const toggleSymbolsBtn = document.getElementById("toggle-symbols-btn");
+        const symbolsDiv = document.getElementById("symbols");
+
+        toggleSymbolsBtn.addEventListener("click", () => {
+            // Vaihdetaan symbolien näkyvyys
+            if (symbolsDiv.style.display === "none" || symbolsDiv.style.display === "") {
+                symbolsDiv.style.display = "block";
+                toggleSymbolsBtn.innerText = "Piilota symbolit"; // Vaihdetaan napin teksti
+            } else {
+                symbolsDiv.style.display = "none";
+                toggleSymbolsBtn.innerText = "Näytä symbolit"; // Vaihdetaan napin teksti
+            }
+        });
+    </script>
+</body>
+</html>

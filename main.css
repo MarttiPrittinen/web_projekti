@@ -1,0 +1,125 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 1em;
+}
+
+main {
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+h1, h2 {
+    color: #000000;
+}
+
+.step-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Kolme laatikkoa per rivi */
+    gap: 15px; /* Lisää tilaa laatikoiden väliin */
+}
+
+.step-box {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px; /* Lisätään paddingia */
+    border-radius: 8px; /* Pyöristetyt kulmat */
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s; /* Lisätään varjo-efekti */
+    height: 80px; /* Lisää laatikoiden korkeutta */
+    display: flex; /* Käytetään flexboxia */
+    align-items: center; /* Keskitetään sisältö pystysuunnassa */
+    justify-content: center; /* Keskitetään sisältö vaakasuunnassa */
+    text-align: center; /* Keskitetään teksti */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Varjo */
+}
+
+.step-box:hover {
+    background-color: #45a049;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Voimakkaampi varjo hover-tilassa */
+}
+
+#instructions {
+    margin-top: 20px;
+}
+
+#step-image {
+    width: 100%;
+    max-width: 400px;
+    display: block;
+    margin: 20px auto;
+}
+
+#step-formula {
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px; /* Suurennetaan solujen paddingia */
+    text-align: left;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+footer {
+    text-align: center;
+    padding: 1em;
+    background-color: #4CAF50;
+    color: white;
+}
+#symbol-legend {
+    margin-top: 20px;
+}
+
+#symbols {
+    margin-top: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#toggle-symbols-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#toggle-symbols-btn:hover {
+    background-color: #45a049;
+}
+footer {
+    position: relative; /* Varmistetaan, että footer on suhteellinen */
+}
+
+#change-bg-btn {
+    position: absolute; /* Asetetaan nappi absoluuttisesti */
+    bottom: 10px; /* Aseta etäisyys alareunasta */
+    right: 10px; /* Aseta etäisyys oikeasta reunasta */
+}
