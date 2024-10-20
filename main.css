@@ -25,28 +25,28 @@ h1, h2 {
 
 .step-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Kolme laatikkoa per rivi */
-    gap: 15px; /* Lisää tilaa laatikoiden väliin */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 15px; 
 }
 
 .step-box {
     background-color: #4CAF50;
     color: white;
-    padding: 15px; /* Lisätään paddingia */
-    border-radius: 8px; /* Pyöristetyt kulmat */
+    padding: 15px; 
+    border-radius: 8px; 
     cursor: pointer;
-    transition: background-color 0.3s, box-shadow 0.3s; /* Lisätään varjo-efekti */
-    height: 80px; /* Lisää laatikoiden korkeutta */
-    display: flex; /* Käytetään flexboxia */
-    align-items: center; /* Keskitetään sisältö pystysuunnassa */
-    justify-content: center; /* Keskitetään sisältö vaakasuunnassa */
-    text-align: center; /* Keskitetään teksti */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Varjo */
+    transition: background-color 0.3s, box-shadow 0.3s; 
+    height: 80px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .step-box:hover {
     background-color: #45a049;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Voimakkaampi varjo hover-tilassa */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
 }
 
 #instructions {
@@ -74,7 +74,7 @@ table {
 
 th, td {
     border: 1px solid #ddd;
-    padding: 12px; /* Suurennetaan solujen paddingia */
+    padding: 12px; 
     text-align: left;
 }
 
@@ -115,11 +115,11 @@ footer {
     background-color: #45a049;
 }
 footer {
-    position: relative; /* Varmistetaan, että footer on suhteellinen */
+    position: relative; 
 }
 
 #change-bg-btn {
-    position: absolute; /* Asetetaan nappi absoluuttisesti */
-    bottom: 10px; /* Aseta etäisyys alareunasta */
-    right: 10px; /* Aseta etäisyys oikeasta reunasta */
+    position: absolute; 
+    bottom: 10px; 
+    right: 10px; 
 }
